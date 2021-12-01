@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// Pulls string data from a text file and returns it as an int array
 func readNumInput(fileName string) (nums []int, err error) {
 	// Reads the input1.txt file
 	file, err := ioutil.ReadFile(fileName)
@@ -30,6 +31,14 @@ func readNumInput(fileName string) (nums []int, err error) {
 		}
 		nums = append(nums, n)
 	}
-
 	return nums, nil
+}
+
+// Loops through an int array and adds each value to return a single int
+func listSum(list []int) int {
+	sum := 0
+	for i := range list {
+		sum = sum + list[i]
+	}
+	return sum
 }
