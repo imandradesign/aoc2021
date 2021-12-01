@@ -12,7 +12,7 @@ func main() {
 
 	depthIncreaseCount := 0
 
-	for i, _ := range input {
+	for i := range input {
 		currentValue := input[i]
 		// We want to skip the first input since there's nothing to compare it to
 		if i > 0 {
