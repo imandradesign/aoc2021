@@ -1,39 +1,33 @@
 package main
 
 import (
-	"fmt"
+	"github.com/sirupsen/logrus"
+)
+
+var (
+	log = logrus.New().WithFields(logrus.Fields{
+		"name": "cmd",
+	})
 )
 
 func main() {
-	input, err := readNumInput("input1.txt")
+	// Input from Day 1
+	inputOne, err := readInputOne("input1.txt")
 	if err != nil {
-		fmt.Printf("Error: %v", err)
+		log.WithError(err).Error("Error with Day 1 input.")
 	}
 
-	depthIncreaseCount := 0
-	inputLen := len(input)
+	// Depth increase count from Day 1
+	depthCount := depthCounter(inputOne)
+	log.Infof("Day 1 - Depth count: %v", depthCount)
 
-	for i := range input {
-		// All number lists to compare must contain at least 3 values
-		if i < (inputLen - 3) {
-			currentValue := input[i]
-			oneNext := input[i+1]
-			twoNext := input[i+2]
-			threeNext := input[i+3]
-			var currentList, nextList []int
-			var currentSum, nextSum int
-
-			currentList = append(currentList, currentValue, oneNext, twoNext)
-			nextList = append(nextList, oneNext, twoNext, threeNext)
-
-			currentSum = listSum(currentList)
-			nextSum = listSum(nextList)
-
-			if nextSum > currentSum {
-				depthIncreaseCount++
-			}
-		}
+	// Input from Day 2
+	inputFullTwo, inputWordsTwo, inputNumsTwo, err := readInputTwo("input2.txt")
+	if err != nil {
+		log.WithError(err).Error("Error with Day 2 input")
 	}
 
-	fmt.Println(depthIncreaseCount)
+	// Multiplied result of final horizontal position and final depth
+	mult := calculatePosition(inputFullTwo, inputWordsTwo, inputNumsTwo)
+	log.Infof("Multiplied position by depth: %v", mult)
 }
