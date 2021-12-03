@@ -9,21 +9,21 @@ func calculatePosition(list []string, words []string, nums []int) (mult int) {
 
 		if currentWord == "forward" {
 			horizPosition += currentNum
+			// log.Infof("Depth: %v. Aim: %v. Current num: %v.", depth, aim, currentNum)
 			depth += (aim * currentNum)
+			// log.Infof("Depth after mult: %v", depth)
 		}
 
 		if currentWord == "up" {
-			depth -= currentNum
 			aim -= currentNum
 		}
 
 		if currentWord == "down" {
-			depth += currentNum
 			aim += currentNum
 		}
 	}
 
-	mult = horizPosition * depth
+	mult = (horizPosition * depth)
 
 	log.Infof("Final horizontal position: %v", horizPosition)
 	log.Infof("Final depth: %v", depth)
