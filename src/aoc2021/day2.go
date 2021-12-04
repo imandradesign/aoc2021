@@ -25,9 +25,5 @@ func calculatePosition(list []string, words []string, nums []int) (mult int) {
 
 	mult = (horizPosition * depth)
 
-	log.Infof("Final horizontal position: %v", horizPosition)
-	log.Infof("Final depth: %v", depth)
-	log.Infof("Final aim: %v", aim)
-
 	return mult
 }

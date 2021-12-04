@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Pulls string data from a text file and returns it as an int array
+// Pulls string data from the input1.txt file and returns an int array & error
 func readInputOne(fileName string) (nums []int, err error) {
 	// Reads the input1.txt file
 	file, err := ioutil.ReadFile(fileName)
@@ -23,7 +23,8 @@ func readInputOne(fileName string) (nums []int, err error) {
 	// Loops through the separate strings from the input file, converts them to ints, and adds them to the nums array
 	for _, l := range lines {
 		if len(l) == 0 {
-			continue
+			log.Info("The 'lines' list was empty.")
+			break
 		}
 		n, err := strconv.Atoi(l)
 		if err != nil {

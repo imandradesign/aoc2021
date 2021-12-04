@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Pulls string data from a text file and returns it as an int array
+// Pulls string data from the input2.txt file and returns 3 arrays & error
 func readInputTwo(fileName string) (fullList []string, words []string, nums []int, err error) {
 	// Reads the input2.txt file
 	file, err := ioutil.ReadFile(fileName)
@@ -21,10 +21,11 @@ func readInputTwo(fileName string) (fullList []string, words []string, nums []in
 	nums = make([]int, 0, len(lines))
 	words = make([]string, 0, len(lines))
 
-	// Loops through the separate strings from the input file, converts them to ints, and adds them to the nums array
+	// Loops through the separate strings from the input file to create separate arrays of the right types
 	for i, l := range lines {
 		if len(l) == 0 {
-			continue
+			log.Info("The 'lines' list was empty.")
+			break
 		}
 
 		currentLine := lines[i]

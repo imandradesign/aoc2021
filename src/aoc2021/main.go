@@ -30,4 +30,14 @@ func main() {
 	// Multiplied result of final horizontal position and final depth
 	mult := calculatePosition(inputFullTwo, inputWordsTwo, inputNumsTwo)
 	log.Infof("Day 2 - Multiplied position by depth: %v", mult)
+
+	// Input from Day 3
+	inputThree, err := readInputThree("inputs/input3.txt")
+	if err != nil {
+		log.WithError(err).Error("Error with Day 3 input")
+	}
+
+	// Multiplied result of epsilon & gamma rates to calculate sub power consumption
+	cons := subConsumption(inputThree)
+	log.Infof("Day 3 - Power consumption: %v", cons)
 }
