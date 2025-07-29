@@ -38,6 +38,14 @@ func main() {
 	}
 
 	// Multiplied result of epsilon & gamma rates to calculate sub power consumption
-	cons := subConsumption(inputThree)
+	cons, gammaBinArray, epsilonBinArray := subConsumption(inputThree)
 	log.Infof("Day 3 - Power consumption: %v", cons)
+	log.Infof("gammaBinArray: %v epsilonBinArray: %v", gammaBinArray, epsilonBinArray)
+
+	log.Info("Desired co2 binary: 011011110010 Desired oxygen binary: 100100001100")
+
+	// Multiplied the "oxygen generator rating" by the "CO2 scrubber rating" to get life support rating.
+	lifeSupport := lifeSupportRating(inputThree)
+
+	log.Infof("Day 3 - Life support rating: %v", lifeSupport)
 }
